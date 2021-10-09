@@ -6,7 +6,7 @@ This is a sample Personal Finance Management (PFM) app built using [Setu Account
 
 ## Try it out
 
-<img width="200" src="https://user-images.githubusercontent.com/284612/129541889-56fd9069-b3a4-4bfe-8b93-a3b667e810b0.png" align="right" />
+<img width="200" src="https://raw.githubusercontent.com/gauravkrp/infy.money-react-native/main/screenshots/mobile.app.jpg" align="right" />
 
 This app has been [published to **Expo**](https://expo.dev/@gkprn/infymoney-pfm). To try it out:
 
