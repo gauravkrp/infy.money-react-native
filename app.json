@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Infy.Money PFM",
+    "slug": "infymoney-pfm",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.pfm.infymoney",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "versionCode": 1
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "description": "Infy.Money Personal Finance Management App. The app was developed as a part of Setu.co - Free Your Data hackathon. InfyMoney is a marketplace & advisory which allows Millennials & Gen-Zs to intuitively track, manage & grow their financial health & wealth by seamlessly aggregating Bank, Investment, Loan & Insurance accounts under single interface and ease discovery of needed related products though marketplace and selection of right products using robo advisory."
+  }
+}
