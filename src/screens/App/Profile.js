@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useLayoutEffect, Component } from "react";
 import { ActivityIndicator, StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import AppPageView from '../../components/AppPageView';
 import Button from '../../components/Button';
@@ -7,18 +7,42 @@ import ApiRoutes from "../../core/apiRoutes";
 import { theme } from '../../core/theme';
 import * as Progress from 'react-native-progress';
 import { ProgressBar, Colors } from 'react-native-paper';
+import { GiftedChat } from 'react-native-gifted-chat';
 
 const API = new ApiRoutes();
 
 export default function StartScreen({ navigation }) {
   const [isLoading, setLoading] = useState(false);
-  const [profileProgress, setProfileProgress] = useState(0)
+  const [profileProgress, setProfileProgress] = useState(0);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
       setProfileProgress(0.3)
     }, 100);
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: 'Hello developer',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      },
+    ])
+  }, []);
+
+  const onSend = useCallback((messages = []) => {
+    console.log(messages);
+    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+  }, []);
+
+  const auth = { currentUser: null };
 
   return (
     <AppPageView>
@@ -86,6 +110,21 @@ export default function StartScreen({ navigation }) {
             <Spacer height={10} />
 
           </View>
+        </View>
+
+        <Spacer height={40} />
+
+        <View style={{ flex: 1, height: 500 }}>
+          <GiftedChat
+            messages={messages}
+            showAvatarForEveryMessage={true}
+            onSend={messages => onSend(messages)}
+            user={{
+              _id: auth?.currentUser?.email,
+              name: auth?.currentUser?.displayName,
+              avatar: auth?.currentUser?.photoURL
+            }}
+          />
         </View>
 
         <Spacer height={40} />
